@@ -5,10 +5,10 @@ use strict;
 use DDG::Spice;
 use Text::Trim;
 
-triggers start => "weather";
+triggers start => "weather", "forecast", "weather forecast";
 
 spice from => '([^/]*)/?([^/]*)';
-spice to => 'http://forecast.io/ddg?apikey={{ENV{DDG_SPICE_FORECAST_APIKEY}}}&q=$1&callback={{callback}}';
+spice to => 'https://darksky.net/ddg?apikey={{ENV{DDG_SPICE_FORECAST_APIKEY}}}&q=$1&callback={{callback}}';
 
 # cache DDG Rewrite for 24 hours and
 # API responses with return code 200 for 30 minutes
